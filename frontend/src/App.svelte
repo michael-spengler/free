@@ -1,16 +1,29 @@
 <script>
-	
-    import Metamask from "./Metamask.svelte";
-	
+	import Metamask from "./Metamask.svelte";
+
 	export let projectTitle;
 
+	let publicWalletAddressOfVisitor;
+	const handleWalletConnected = async (event) => {
+		publicWalletAddressOfVisitor = event.detail.publicWalletAddress;
+	};
 </script>
 
 <main>
 	<h1>{projectTitle}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<p>
+		Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn
+		how to build Svelte apps.
+	</p>
 
-	<Metamask></Metamask>
+	<Metamask on:walletConnected={handleWalletConnected} />
+
+	{#if publicWalletAddressOfVisitor != undefined}
+		<p><br /></p>
+		You are connected with wallet:
+		<p />
+		{publicWalletAddressOfVisitor}
+	{/if}
 </main>
 
 <style>
