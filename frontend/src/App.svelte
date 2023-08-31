@@ -9,28 +9,33 @@
 	async function handleWalletConnected(event) {
 		publicWalletAddressOfVisitor = event.detail.publicWalletAddress;
 		connectedToChainId = event.detail.chainId;
-	};
-
+	}
 </script>
 
 <main>
 	<h1>{projectTitle}!</h1>
-	<p>
-		Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn
-		how to build Svelte apps.
-	</p>
 
-	<Metamask
-		on:walletConnected={handleWalletConnected}
-	/>
+	<Metamask on:walletConnected={handleWalletConnected} />
 
 	{#if publicWalletAddressOfVisitor != undefined}
 		<p><br /></p>
 		You are connected with wallet:
 		<p />
-		{publicWalletAddressOfVisitor} <p></p>
-		on chain Id: <p></p>
+		{publicWalletAddressOfVisitor}
+		<p />
+		on chain Id:
+		<p />
 		{connectedToChainId}
+		<p />
+
+		You might be interested in
+		<p />
+		<a href="https://chainid.network/" target="_blank">chainid.network</a>
+		and in
+		<p />
+		<a href="https://chainlist.org/" target="_blank">chainlist.org</a>
+	{:else}
+		Please check Metamask Browserextension and reload.
 	{/if}
 </main>
 
