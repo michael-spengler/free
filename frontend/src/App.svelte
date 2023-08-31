@@ -4,7 +4,8 @@
 	export let projectTitle;
 
 	let publicWalletAddressOfVisitor;
-	const handleWalletConnected = async (event) => {
+
+	async function handleWalletConnected(event) {
 		publicWalletAddressOfVisitor = event.detail.publicWalletAddress;
 	};
 </script>
@@ -16,7 +17,10 @@
 		how to build Svelte apps.
 	</p>
 
-	<Metamask on:walletConnected={handleWalletConnected} />
+	<Metamask
+		on:walletConnected={handleWalletConnected}
+		on:chainChanged={handleChainChanged}
+	/>
 
 	{#if publicWalletAddressOfVisitor != undefined}
 		<p><br /></p>
