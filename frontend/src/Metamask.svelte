@@ -3,6 +3,7 @@
     import { createEventDispatcher } from "svelte";
 
     let connectedWallet;
+    let chainId;
     let accounts;
 
     const dispatch = createEventDispatcher();
@@ -19,9 +20,14 @@
             });
             connectedWallet = accounts[0].toLowerCase();
 
+            chainId = await window.ethereum.request({
+                method: "eth_chainId",
+            });
             dispatch("walletConnected", {
                 publicWalletAddress: connectedWallet,
+                chainId: chainId,
             });
+
         }
     });
 </script>

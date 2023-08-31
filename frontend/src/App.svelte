@@ -4,10 +4,13 @@
 	export let projectTitle;
 
 	let publicWalletAddressOfVisitor;
+	let connectedToChainId;
 
 	async function handleWalletConnected(event) {
 		publicWalletAddressOfVisitor = event.detail.publicWalletAddress;
+		connectedToChainId = event.detail.chainId;
 	};
+
 </script>
 
 <main>
@@ -19,14 +22,15 @@
 
 	<Metamask
 		on:walletConnected={handleWalletConnected}
-		on:chainChanged={handleChainChanged}
 	/>
 
 	{#if publicWalletAddressOfVisitor != undefined}
 		<p><br /></p>
 		You are connected with wallet:
 		<p />
-		{publicWalletAddressOfVisitor}
+		{publicWalletAddressOfVisitor} <p></p>
+		on chain Id: <p></p>
+		{connectedToChainId}
 	{/if}
 </main>
 
