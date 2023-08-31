@@ -1,10 +1,16 @@
 <script>
+	
+    import Metamask from "./Metamask.svelte";
+	
 	export let projectTitle;
+
 </script>
 
 <main>
 	<h1>{projectTitle}!</h1>
 	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+
+	<Metamask></Metamask>
 </main>
 
 <style>
