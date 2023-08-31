@@ -1,5 +1,10 @@
 <script>
 	import Metamask from "./Metamask.svelte";
+	// import * as Contract from 'web3-eth-contract';
+
+	// import { Contract } from 'web3-eth-contract';
+	// import { smartContractABI } from './constants.ts';
+
 
 	export let projectTitle;
 	export let targetChainId;
@@ -8,10 +13,11 @@
 	
 	let publicWalletAddressOfVisitor;
 	let connectedToChainId;
-
+	
 	async function handleWalletConnected(event) {
 		publicWalletAddressOfVisitor = event.detail.publicWalletAddress;
 		connectedToChainId = event.detail.chainId;
+		// const web3EthContract = new Contract(smartContractABI);
 	}
 </script>
 
@@ -21,7 +27,6 @@
 	<Metamask 
 	targetChainId={targetChainId} 
 	targetChainName={targetChainName} 
-	smartContractAddressOnChain={smartContractAddressOnChain} 
 	on:walletConnected={handleWalletConnected} />
 
 	{#if publicWalletAddressOfVisitor != undefined}
@@ -41,6 +46,11 @@
 		and in
 		<p />
 		<a href="https://chainlist.org/" target="_blank">chainlist.org</a>
+
+		<p><br></p>
+
+		This dApp allows you to interact with the following smart contract: <p></p>
+		{smartContractAddressOnChain} on {targetChainName}.
 	{:else}
 		Please check Metamask Browserextension and reload.
 	{/if}
