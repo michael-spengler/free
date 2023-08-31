@@ -19,7 +19,7 @@
     "svelte": "^3.55.0"
   },
   "dependencies": {
-    "sirv-cli": "^2.0.0",
-    "web3-eth": "^4.1.1"
+    "ethers": "^6.7.1",
+    "sirv-cli": "^2.0.0"
   }
 }
