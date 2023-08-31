@@ -2,7 +2,10 @@
 	import Metamask from "./Metamask.svelte";
 
 	export let projectTitle;
-
+	export let targetChainId;
+	export let targetChainName;
+	export let smartContractAddressOnChain;
+	
 	let publicWalletAddressOfVisitor;
 	let connectedToChainId;
 
@@ -15,7 +18,11 @@
 <main>
 	<h1>{projectTitle}!</h1>
 
-	<Metamask on:walletConnected={handleWalletConnected} />
+	<Metamask 
+	targetChainId={targetChainId} 
+	targetChainName={targetChainName} 
+	smartContractAddressOnChain={smartContractAddressOnChain} 
+	on:walletConnected={handleWalletConnected} />
 
 	{#if publicWalletAddressOfVisitor != undefined}
 		<p><br /></p>
