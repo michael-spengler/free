@@ -6,7 +6,7 @@ const app = new App({
 		projectTitle: 'our project title',
 		targetChainId: 1101,
 		targetChainName: "Polygon zkEVM",
-		smartContractAddressOnChain: 0x7309Ff3B8db9f39633EdD960CDB9E50414b2Fd53
+		smartContractAddressOnChain: "0xAdaf68647a80A0D10476314DDA6bB1aBe08C5db7"
 	}
 });
 

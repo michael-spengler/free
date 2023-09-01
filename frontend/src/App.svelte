@@ -1,11 +1,8 @@
 <script>
 	import Metamask from "./Metamask.svelte";
-	// import * as Contract from 'web3-eth-contract';
-
-	// import { Contract } from 'web3-eth-contract';
-	// import { smartContractABI } from './constants.ts';
-
-
+	import { ethers } from "ethers";
+	import { smartContractABI } from './constants.ts';
+	
 	export let projectTitle;
 	export let targetChainId;
 	export let targetChainName;
@@ -13,11 +10,16 @@
 	
 	let publicWalletAddressOfVisitor;
 	let connectedToChainId;
+	let amountOfCoinsInSmartContractItself;
 	
 	async function handleWalletConnected(event) {
 		publicWalletAddressOfVisitor = event.detail.publicWalletAddress;
 		connectedToChainId = event.detail.chainId;
-		// const web3EthContract = new Contract(smartContractABI);
+		const provider = new ethers.BrowserProvider(window.ethereum)
+		//const signer = await provider.getSigner()
+		let contract = new ethers.Contract(smartContractAddressOnChain, smartContractABI, provider)
+		amountOfCoinsInSmartContractItself = 
+		ethers.formatEther((await contract.balanceOf(smartContractAddressOnChain)));
 	}
 </script>
 
@@ -51,6 +53,11 @@
 
 		This dApp allows you to interact with the following smart contract: <p></p>
 		{smartContractAddressOnChain} on {targetChainName}.
+
+		<p><br></p>
+		Within the smart contract itself there are currently <p><br></p>
+		{amountOfCoinsInSmartContractItself} Coins.
+
 	{:else}
 		Please check Metamask Browserextension and reload.
 	{/if}
