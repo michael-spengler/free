@@ -24,6 +24,10 @@ Code Editor: https://code.visualstudio.com/insiders/
 https://chainlist.org   
 https://metamask.io  
 https://remix.ethereum.org  
+https://earni.fi/  
+https://www.lens.xyz/  
+https://www.tally.xyz/explore  
+
 
 
 
