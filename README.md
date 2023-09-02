@@ -4,6 +4,7 @@ This project fosters decentralization and peer 2 peer collaboration.
 
 ## Frontend
 To combine the best of angular, vue and react I use [svelte](https://svelte.dev/).
+Basics: https://www.w3schools.com 
 
 ## Backend
 The backend code of this project consists of smart contracts written in solidity.  
